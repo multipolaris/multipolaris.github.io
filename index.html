@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenir Multipolaris</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        h1, h2, h3 {
+            color: #1a2533;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #dee2e6;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .card {
+            background-color: #fdfdfd;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #34495e;
+        }
+        .info-block {
+            background-color: #f8f9fa;
+            border-left: 5px solid #6c757d;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            word-break: break-word;
+        }
+        .info-block strong {
+            display: inline-block;
+            min-width: 100px;
+        }
+        .note {
+            background-color: #e9f7ef;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #34495e;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #2c3e50;
+            text-decoration: none;
+        }
+        .crypto-address {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+            word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 15px;
+        }
+        .copy-btn:hover { background-color: #5a6268; }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Soutenir Multipolaris</h1>
+        <p class="intro">
+            Votre soutien est essentiel pour garantir l'indépendance de la chaîne et continuer à produire des analyses géopolitiques et militaires de qualité. Chaque contribution, peu importe le montant, fait une réelle différence.
+        </p>
+
+        <!-- Section Don Ponctuel -->
+        <h2>Faire un don ponctuel</h2>
+        <p>Si vous souhaitez faire un don unique, vous pouvez utiliser les méthodes ci-dessous.</p>
+
+        <div class="card">
+            <h3>Western Union</h3>
+            <div class="info-block">
+                <strong>Pays :</strong> Madagascar<br>
+                <strong>Prénom et Nom :</strong> Houssen Mohsinaly<br>
+                <strong>Adresse :</strong> Lot IVW 5A - Anosizato Est<br>
+                <strong>Ville :</strong> Antananarivo<br>
+                <strong>Téléphone :</strong> +261341854716<br>
+                <strong>Email :</strong> housseniawriting@gmail.com
+            </div>
+            <p class="note"><strong>Important :</strong> Veuillez choisir l'option "<strong>Retrait en espèce</strong>" et me fournir le numéro de suivi (MTCN) par WhatsApp.</p>
+            <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn" target="_blank">Site de Western Union</a>
+        </div>
+
+        <div class="card">
+            <h3>Remitly & Taptap Send</h3>
+            <div class="info-block">
+                <strong>Prénom et Nom :</strong> Houssen Moshinaly<br>
+                <strong>Opérateur :</strong> Mvola<br>
+                <strong>Numéro de Tél :</strong> +261341854716
+            </div>
+            <a href="https://www.remitly.com/fr/fr/madagascar" class="btn" target="_blank">Site de Remitly</a>
+            <a href="https://www.taptapsend.com/country-landing-pages/transferts-madagascar" class="btn" style="margin-left: 10px;" target="_blank">Site de Taptap Send</a>
+        </div>
+
+        <div class="card">
+            <h3>Dons par Cryptomonnaie</h3>
+            <p>Vous pouvez également contribuer via les cryptomonnaies suivantes :</p>
+            
+            <strong>USDT (TRC-20) :</strong>
+            <div class="crypto-address">
+                <code id="usdt-address">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</code>
+                <button class="copy-btn" onclick="copyToClipboard('usdt-address', this)">Copier</button>
+            </div>
+
+            <strong style="margin-top: 20px; display: block;">Bitcoin (BTC) :</strong>
+            <div class="crypto-address">
+                <code id="btc-address">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</code>
+                <button class="copy-btn" onclick="copyToClipboard('btc-address', this)">Copier</button>
+            </div>
+        </div>
+        
+        <!-- Section Soutien Régulier -->
+        <h2>Soutenir sur le long terme (Patreon)</h2>
+        <p>
+            Si vous préférez un soutien mensuel, Patreon est la meilleure option. Cela permet une meilleure visibilité et aide à planifier la production de contenu.
+        </p>
+        <a href="[LIEN VERS VOTRE PATREON MULTIPOLARIS]" class="btn" target="_blank">Découvrir le Patreon</a>
+
+        <!-- Section Contact -->
+        <h2>Après votre don (Optionnel)</h2>
+        <p>
+            Si vous le souhaitez, vous pouvez m'envoyer un message sur WhatsApp pour me prévenir de votre don. C'est obligatoire pour Western Union (pour le MTCN) mais facultatif pour les autres méthodes. Cela me permettrait surtout de vous remercier personnellement !
+        </p>
+        <a href="https://wa.me/261341854716" class="btn" target="_blank">Contacter sur WhatsApp</a>
+        
+        <!-- Pied de page -->
+        <div class="footer">
+            <p>Un immense merci pour votre générosité et votre confiance.</p>
+            <p><a href="[LIEN VERS LA CHAINE YOUTUBE MULTIPOLARIS]">Retour à la chaîne Multipolaris</a></p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId, button) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copié !';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Erreur lors de la copie : ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
