@@ -3,352 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Soutenir mes projets</title>
+    <title id="page-title">Houssen Moshinaly - Soutien & Donations</title>
+    <!-- Favicon (optionnel, mettez une icone si vous en avez une) -->
+    <link rel="icon" href="https://www.youtube.com/s/desktop/1a5a0a33/img/favicon.ico"> 
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@400;600&display=swap');
 
-        /* Variables par défaut (Mode Neutre / Houssen) */
+        /* --- THEMES --- */
         :root {
-            --primary-color: #2c3e50; /* Bleu nuit neutre */
-            --accent-color: #3498db;  /* Bleu tech */
-            --bg-color: #f8f9fa;
+            /* THÈME PAR DÉFAUT (NEUTRE / PERSO) */
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9; 
+            --bg-color: #f4f6f8;
             --card-bg: #ffffff;
-            --text-color: #343a40;
-            --border-color: #dee2e6;
-            --shadow-color: rgba(44, 62, 80, 0.1);
+            --text-color: #333333;
+            --border-color: #dfe6e9;
+            --header-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
         }
 
-        /* Classe spécifique pour le mode Multipolaris (Militaire/Sombre) */
         body.theme-multi {
+            /* THÈME MULTIPOLARIS (SÉRIEUX / MILITAIRE) */
             --primary-color: #0A2647;
             --accent-color: #14919B;
-            --bg-color: #f0f2f5;
-            --shadow-color: rgba(10, 38, 71, 0.15);
+            --bg-color: #eef2f5;
+            --header-gradient: linear-gradient(135deg, #0A2647 0%, #1a4a6e 100%);
         }
 
-        /* Classe spécifique pour le mode Tech (IA/Moderne) */
         body.theme-tech {
-            --primary-color: #212121;
-            --accent-color: #6200ea; /* Violet Tech */
+            /* THÈME TECH (MODERNE / IA) */
+            --primary-color: #111;
+            --accent-color: #6200ea;
             --bg-color: #fafafa;
+            --header-gradient: linear-gradient(135deg, #6200ea 0%, #3700b3 100%);
         }
 
+        /* --- GLOBAL --- */
         body {
-            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s ease;
         }
 
         .container {
-            max-width: 850px;
-            margin: 30px auto;
+            max-width: 800px;
+            margin: 40px auto;
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px var(--shadow-color);
-            border-top: 5px solid var(--accent-color);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            padding-bottom: 40px;
         }
 
-        /* Header Section */
-        .header-branding {
+        /* --- HEADER & PROFIL --- */
+        .header-hero {
+            background: var(--header-gradient);
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 30px;
+        }
+
+        .profile-img-container {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            padding: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #eee; /* Gris si pas d'image */
         }
 
         h1 {
             font-family: 'Roboto', sans-serif;
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 5px;
-            font-weight: 600;
+            margin: 0;
+            font-size: 2.2em;
         }
         
-        .channel-badge {
-            display: inline-block;
-            padding: 4px 12px;
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background-color: var(--primary-color);
-            color: white;
-            margin-bottom: 15px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* --- PROJETS (Visible en mode neutre) --- */
+        .my-projects {
+            padding: 20px 40px;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            display: none; /* Caché par défaut, activé via JS */
+        }
+        
+        .project-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: #333;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .project-link:hover {
+            transform: translateY(-2px);
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .content-area {
+            padding: 20px 40px;
         }
 
         h2 {
             font-family: 'Roboto', sans-serif;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            margin-top: 50px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
         }
         
-        h3 {
-            font-family: 'Roboto', sans-serif;
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.4em;
-        }
-        
-        .intro {
+        .intro-text {
             text-align: center;
             font-size: 1.1em;
             color: #555;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 30px;
+            font-style: italic;
         }
-        
+
+        /* --- CARTE DE PAIEMENT --- */
         .card {
             background-color: #fff;
-            border: 1px solid #e9ecef;
+            border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 30px;
-            margin-top: 25px;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-color);
-        }
+        .card h3 { margin-top: 0; color: var(--primary-color); }
 
         .info-block {
             background-color: var(--bg-color);
-            border-left: 4px solid var(--accent-color);
-            padding: 15px 20px;
-            margin: 20px 0;
+            padding: 15px;
             border-radius: 6px;
-            word-break: break-word;
+            margin: 15px 0;
+            font-size: 0.95em;
         }
-        .info-block strong {
-            display: inline-block;
-            min-width: 120px;
-            font-weight: 600;
-        }
+        .info-block strong { display: inline-block; min-width: 100px; }
 
+        /* BOUTONS */
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
             color: #fff;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-        .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
-        }
-        .btn-patreon {
-            background-color: #FF424D; /* Couleur officielle Patreon */
-        }
-        .btn-patreon:hover {
-            background-color: #e63b45;
-        }
-
-        .crypto-address {
-            background-color: #e9ecef;
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1em;
-            word-break: break-all;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 0.9em;
             margin-top: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+        .btn-patreon { background-color: #FF424D; width: 100%; text-align: center; box-sizing: border-box; font-size: 1.1em; }
+        .btn-whatsapp { background-color: #25D366; width: 100%; text-align: center; box-sizing: border-box; }
+
+        /* CRYPTO */
+        .crypto-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f1f3f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
         }
         .copy-btn {
-            background-color: #6c757d;
+            background: #636e72;
             color: white;
             border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9em;
-            transition: background-color 0.2s;
-            white-space: nowrap;
+            margin-left: 10px;
         }
-        .copy-btn:hover { background-color: #5a6268; }
 
+        /* FOOTER */
         .footer {
             text-align: center;
             margin-top: 50px;
-            font-size: 0.9em;
-            color: #777;
-            border-top: 1px solid var(--border-color);
-            padding-top: 25px;
+            font-size: 0.85em;
+            color: #888;
+            padding: 0 20px;
         }
-        .footer a {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        .footer a:hover { text-decoration: underline; }
+        .footer a { color: var(--accent-color); text-decoration: none; }
 
-        /* Media query pour mobile */
         @media (max-width: 600px) {
-            .container { padding: 20px; }
-            h1 { font-size: 1.8em; }
-            .info-block strong { display: block; margin-bottom: 5px; }
-            .btn { width: 100%; text-align: center; box-sizing: border-box; }
+            .container { margin: 0; border-radius: 0; }
+            .content-area { padding: 20px; }
+            .my-projects { padding: 20px; }
+            .crypto-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .copy-btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header-branding">
-            <div id="channel-badge" class="channel-badge" style="display:none;"></div>
-            <h1 id="main-title">Soutenir mes Projets</h1>
-            <div id="intro-text" class="intro">
-                Votre soutien permet de garantir l'indépendance de mes chaînes et de financer la production de contenus libres de toute influence.
-            </div>
-        </div>
-
-        <!-- Section Don Ponctuel -->
-        <h2>Faire un don ponctuel</h2>
-        <p>Les infrastructures de paiement à Madagascar étant limitées, voici les méthodes les plus fiables pour me soutenir directement.</p>
-
-        <div class="card">
-            <h3>Western Union</h3>
-            <p>Idéal pour les envois internationaux avec retrait en espèces.</p>
-            <div class="info-block">
-                <strong>Pays :</strong> Madagascar<br>
-                <strong>Prénom :</strong> Houssen<br>
-                <strong>Nom :</strong> Moshinaly<br>                
-                <strong>Ville :</strong> Antananarivo<br>
-                <strong>Téléphone :</strong> +261341854716
-            </div>
-            <p style="font-size: 0.9em; color: #555;"><strong>Important :</strong> Choisissez "<strong>Retrait en espèce</strong>" et envoyez-moi le numéro MTCN par WhatsApp.</p>
-            <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn" target="_blank">Site Western Union</a>
-        </div>
         
-        <div class="card">
-            <h3>Remitly & Taptap Send (Mobile Money)</h3>
-            <p>Envoi direct sur mon portefeuille mobile (Mvola).</p>
-            <div class="info-block">
-                <strong>Prénom / Nom :</strong> Houssen Moshinaly<br>
-                <strong>Opérateur :</strong> Telma Mvola<br>
-                <strong>Numéro :</strong> +261341854716
+        <!-- EN-TÊTE (Change selon le contexte) -->
+        <div class="header-hero">
+            <!-- Image de profil (visible surtout en mode neutre) -->
+            <div id="profile-pic" class="profile-img-container" style="display:none;">
+                <!-- REMPLACEZ CE LIEN PAR VOTRE PHOTO -->
+                <img src="https://i.imgur.com/1ja7eRv.jpeg" alt="Houssen Moshinaly" class="profile-img">
             </div>
-            <a href="https://www.remitly.com/fr/fr/madagascar" class="btn" target="_blank">Remitly</a>
-            <a href="https://www.taptapsend.com/country-landing-pages/transferts-madagascar" class="btn" target="_blank">Taptap Send</a>
-        </div>
 
-        <div class="card">
-            <h3>Cryptomonnaies</h3>
-            <p>Rapide, moderne et sans frais bancaires.</p>
+            <h1 id="main-title">Houssen Moshinaly</h1>
+            <div id="subtitle" class="subtitle">Créateur de Contenu & Analyste</div>
             
-            <strong>USDT (Réseau TRC-20) :</strong>
-            <div class="crypto-address">
-                <code id="usdt-address">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</code>
-                <button class="copy-btn" onclick="copyToClipboard('usdt-address', this)">Copier</button>
-            </div>
-
-            <strong style="margin-top: 20px; display: block;">Bitcoin (BTC) :</strong>
-            <div class="crypto-address">
-                <code id="btc-address">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</code>
-                <button class="copy-btn" onclick="copyToClipboard('btc-address', this)">Copier</button>
+            <div id="location-tag" class="location-badge" style="display:none;">
+                📍 Antananarivo, Madagascar
             </div>
         </div>
-        
-        <!-- Section Soutien Régulier -->
-        <h2>Soutien Mensuel (Patreon)</h2>
-        <p>
-            Pour devenir un pilier de la chaîne et accéder aux coulisses. C'est le moyen le plus stable de soutenir la création sur le long terme.
-        </p>
-        <a href="https://patreon.com/houssenmoshine" class="btn btn-patreon" target="_blank">Rejoindre sur Patreon</a>
 
-        <!-- Section Contact -->
-        <h2>Me contacter</h2>
-        <p>
-            Pour le MTCN (Western Union) ou simplement pour un petit mot, je suis joignable sur WhatsApp.
-        </p>
-        <a href="https://wa.me/261341854716" class="btn" target="_blank" style="background-color:#25D366;">WhatsApp Direct</a>
-        
-        <!-- Pied de page -->
-        <div class="footer">
-            <p>Merci pour votre générosité et votre confiance.</p>
-            <p>
-                <a href="https://www.youtube.com/@multipolarisfr">📺 Multipolaris</a> | 
-                <a href="https://www.youtube.com/c/HoussenMoshinaly">📺 Chaîne Tech & IA</a>
+        <!-- SECTION PROFIL & PROJETS (Visible UNIQUEMENT en mode neutre) -->
+        <div id="projects-section" class="my-projects">
+            <p>Bienvenue sur ma page de soutien centralisée. Je suis le créateur derrière ces projets :</p>
+            <div class="project-grid">
+                <a href="https://www.youtube.com/@multipolarisfr" target="_blank" class="project-link">
+                    🌍 Multipolaris (Géopolitique)
+                </a>
+                <a href="https://www.youtube.com/c/HoussenMoshinaly" target="_blank" class="project-link">
+                    🤖 Houssen Moshinaly (Tech & IA)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+            <p id="dynamic-intro" class="intro-text">
+                Depuis Madagascar, je produis des contenus indépendants. Votre soutien direct est essentiel pour contourner les obstacles géographiques et maintenir la qualité des chaînes.
             </p>
+
+            <!-- BOUTON PATREON (Mis en avant) -->
+            <div class="card" style="border-color: #FF424D; background: #fff5f5;">
+                <h3 style="color: #FF424D;">⭐ Soutien Mensuel (Patreon)</h3>
+                <p>Le meilleur moyen de garantir la pérennité de mes projets et d'accéder aux contenus exclusifs.</p>
+                <a href="https://patreon.com/houssenmoshine" class="btn btn-patreon" target="_blank">Rejoindre les mécènes sur Patreon</a>
+            </div>
+
+            <h2>Faire un don ponctuel</h2>
+            <p>Pas d'abonnement, juste un geste libre selon vos moyens.</p>
+
+            <!-- WESTERN UNION -->
+            <div class="card">
+                <h3>Western Union</h3>
+                <p>La méthode la plus fiable pour me faire parvenir des fonds à Madagascar.</p>
+                <div class="info-block">
+                    <strong>Pays :</strong> Madagascar<br>
+                    <strong>Nom complet :</strong> Houssen Moshinaly<br>
+                    <strong>Ville :</strong> Antananarivo<br>
+                    <strong>Tél :</strong> +261 34 18 547 16
+                </div>
+                <p style="font-size:0.9em; color:#d63031;"><strong>⚠️ Important :</strong> Choisissez "Retrait en espèce" et envoyez-moi le code MTCN par WhatsApp.</p>
+                <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn" target="_blank">Site Western Union</a>
+            </div>
+
+            <!-- MOBILE MONEY -->
+            <div class="card">
+                <h3>Remitly / Taptap Send / WorldRemit</h3>
+                <p>Envoi direct sur portefeuille mobile (Mobile Money).</p>
+                <div class="info-block">
+                    <strong>Opérateur :</strong> Telma Mvola<br>
+                    <strong>Bénéficiaire :</strong> Houssen Moshinaly<br>
+                    <strong>Numéro :</strong> +261 34 18 547 16
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <a href="https://www.remitly.com/" class="btn" target="_blank">Remitly</a>
+                    <a href="https://www.taptapsend.com/" class="btn" target="_blank">Taptap Send</a>
+                </div>
+            </div>
+
+            <!-- CRYPTO -->
+            <div class="card">
+                <h3>Cryptomonnaies</h3>
+                <p>Rapide, discret et sans frais bancaires.</p>
+                
+                <div style="margin-bottom:15px;">
+                    <strong>USDT (Réseau TRC-20) :</strong>
+                    <div class="crypto-row">
+                        <span id="usdt-addr" style="word-break:break-all;">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</span>
+                        <button class="copy-btn" onclick="copyTo('usdt-addr', this)">Copier</button>
+                    </div>
+                </div>
+
+                <div>
+                    <strong>Bitcoin (BTC) :</strong>
+                    <div class="crypto-row">
+                        <span id="btc-addr" style="word-break:break-all;">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</span>
+                        <button class="copy-btn" onclick="copyTo('btc-addr', this)">Copier</button>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Contact & Confirmation</h2>
+            <p>Pour le MTCN (Western Union) ou simplement pour discuter.</p>
+            <a href="https://wa.me/261341854716" class="btn btn-whatsapp" target="_blank">
+                💬 M'écrire sur WhatsApp (+261 34 18 547 16)
+            </a>
+
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Houssen Moshinaly - Tous droits réservés.</p>
+            <p>Merci de rendre ces projets possibles.</p>
         </div>
     </div>
 
     <script>
-        // Fonction de copie (inchangée)
-        function copyToClipboard(elementId, button) {
-            const textToCopy = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalText = button.innerText;
-                button.innerText = 'Copié !';
-                button.style.backgroundColor = '#28a745';
+        function copyTo(id, btn) {
+            const txt = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(txt).then(() => {
+                let original = btn.innerText;
+                btn.innerText = "Copié !";
+                btn.style.background = "#27ae60";
                 setTimeout(() => {
-                    button.innerText = originalText;
-                    button.style.backgroundColor = '#6c757d';
+                    btn.innerText = original;
+                    btn.style.background = "#636e72";
                 }, 2000);
-            }).catch(err => {
-                console.error('Erreur : ', err);
             });
         }
 
-        // LOGIQUE DYNAMIQUE
-        document.addEventListener('DOMContentLoaded', function() {
+        // GESTION DYNAMIQUE DE L'AFFICHAGE
+        document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const channel = params.get('channel');
             
-            const badge = document.getElementById('channel-badge');
+            // Éléments du DOM
+            const body = document.body;
             const title = document.getElementById('main-title');
-            const intro = document.getElementById('intro-text');
+            const subtitle = document.getElementById('subtitle');
+            const intro = document.getElementById('dynamic-intro');
+            const profilePic = document.getElementById('profile-pic');
+            const projectsSection = document.getElementById('projects-section');
+            const locationTag = document.getElementById('location-tag');
             const pageTitle = document.getElementById('page-title');
 
             if (channel === 'multi') {
-                // Mode Multipolaris
-                document.body.classList.add('theme-multi');
-                badge.style.display = 'inline-block';
-                badge.innerText = 'Multipolaris';
-                title.innerText = 'Soutenir la chaîne Multipolaris';
-                intro.innerText = "Votre soutien est la clé de notre indépendance. Il permet de financer la recherche géopolitique et de garantir des analyses libres de toute influence.";
+                // --- MODE MULTIPOLARIS ---
+                body.classList.add('theme-multi');
+                title.innerText = "Soutenir Multipolaris";
+                subtitle.innerText = "Analyses Géopolitiques & Militaires";
+                intro.innerHTML = "La production de vidéos d'analyse militaire demande du temps et des ressources. Votre soutien garantit l'indépendance éditoriale de la chaîne.";
                 pageTitle.innerText = "Soutenir Multipolaris";
+                // On cache le profil perso pour rester sur le "Brand"
             } 
             else if (channel === 'tech') {
-                // Mode Houssen Moshinaly Tech
-                document.body.classList.add('theme-tech');
-                badge.style.display = 'inline-block';
-                badge.innerText = 'Houssen Moshinaly Tech';
-                title.innerText = 'Soutenir la chaîne Tech & IA';
-                intro.innerText = "Le matériel, les serveurs pour l'IA et le temps de recherche coûtent cher. Votre aide me permet de continuer à vulgariser la technologie.";
-                pageTitle.innerText = "Soutenir Houssen Moshinaly";
+                // --- MODE TECH ---
+                body.classList.add('theme-tech');
+                title.innerText = "Houssen Moshinaly Tech";
+                subtitle.innerText = "Intelligence Artificielle & Technologie";
+                intro.innerHTML = "Tester les nouvelles IA, héberger des modèles et créer des tutoriels a un coût (GPU, Serveurs). Merci de m'aider à vulgariser le futur.";
+                pageTitle.innerText = "Soutenir la chaîne Tech";
             } 
             else {
-                // Mode par défaut (Neutre / Hub)
-                // On garde les textes par défaut écrits dans le HTML
+                // --- MODE NEUTRE / HUB (Défaut) ---
+                // C'est ici qu'on affiche tout le profil complet
+                profilePic.style.display = "block";
+                locationTag.style.display = "inline-flex";
+                projectsSection.style.display = "block";
+                
+                // On garde les textes par défaut du HTML
             }
         });
     </script>
-
 </body>
 </html>
