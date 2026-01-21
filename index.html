@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soutenir la Chaîne Multipolaris</title>
+    <title id="page-title">Soutenir mes projets</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap');
 
+        /* Variables par défaut (Mode Neutre / Houssen) */
         :root {
-            --primary-color: #0A2647;
-            --accent-color: #14919B;
-            --light-bg: #f8f9fa;
+            --primary-color: #2c3e50; /* Bleu nuit neutre */
+            --accent-color: #3498db;  /* Bleu tech */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
             --text-color: #343a40;
             --border-color: #dee2e6;
+            --shadow-color: rgba(44, 62, 80, 0.1);
+        }
+
+        /* Classe spécifique pour le mode Multipolaris (Militaire/Sombre) */
+        body.theme-multi {
+            --primary-color: #0A2647;
+            --accent-color: #14919B;
+            --bg-color: #f0f2f5;
+            --shadow-color: rgba(10, 38, 71, 0.15);
+        }
+
+        /* Classe spécifique pour le mode Tech (IA/Moderne) */
+        body.theme-tech {
+            --primary-color: #212121;
+            --accent-color: #6200ea; /* Violet Tech */
+            --bg-color: #fafafa;
         }
 
         body {
@@ -20,27 +38,54 @@
             line-height: 1.7;
             margin: 0;
             padding: 20px;
-            background-color: var(--light-bg);
+            background-color: var(--bg-color);
             color: var(--text-color);
+            transition: background-color 0.3s ease;
         }
 
         .container {
             max-width: 850px;
             margin: 30px auto;
-            background: #ffffff;
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(10, 38, 71, 0.1);
+            box-shadow: 0 8px 30px var(--shadow-color);
+            border-top: 5px solid var(--accent-color);
+        }
+
+        /* Header Section */
+        .header-branding {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         h1 {
             font-family: 'Roboto', sans-serif;
             font-size: 2.5em;
             color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
         }
         
+        .channel-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: var(--primary-color);
+            color: white;
+            margin-bottom: 15px;
+        }
+
         h2 {
             font-family: 'Roboto', sans-serif;
             color: var(--primary-color);
@@ -58,7 +103,7 @@
         
         .intro {
             text-align: center;
-            font-size: 1.15em;
+            font-size: 1.1em;
             color: #555;
             margin-bottom: 40px;
             max-width: 700px;
@@ -77,11 +122,11 @@
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(10, 38, 71, 0.08);
+            box-shadow: 0 10px 20px var(--shadow-color);
         }
 
         .info-block {
-            background-color: var(--light-bg);
+            background-color: var(--bg-color);
             border-left: 4px solid var(--accent-color);
             padding: 15px 20px;
             margin: 20px 0;
@@ -108,15 +153,15 @@
             margin-bottom: 10px;
         }
         .btn:hover {
-            background-color: #0f7a83;
+            opacity: 0.9;
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(20, 145, 155, 0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
         }
         .btn-patreon {
-            background-color: var(--primary-color);
+            background-color: #FF424D; /* Couleur officielle Patreon */
         }
         .btn-patreon:hover {
-            background-color: #071c35;
+            background-color: #e63b45;
         }
 
         .crypto-address {
@@ -130,6 +175,8 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .copy-btn {
             background-color: #6c757d;
@@ -139,8 +186,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
-            margin-left: 15px;
             transition: background-color 0.2s;
+            white-space: nowrap;
         }
         .copy-btn:hover { background-color: #5a6268; }
 
@@ -155,49 +202,64 @@
         .footer a {
             color: var(--accent-color);
             font-weight: 600;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer a:hover { text-decoration: underline; }
+
+        /* Media query pour mobile */
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8em; }
+            .info-block strong { display: block; margin-bottom: 5px; }
+            .btn { width: 100%; text-align: center; box-sizing: border-box; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Soutenir Multipolaris</h1>
-        <p class="intro">
-            Votre soutien est la clé de notre indépendance. Il permet de financer la recherche, la production et de garantir des analyses géopolitiques et militaires libres de toute influence. Chaque contribution est précieuse.
-        </p>
+        <div class="header-branding">
+            <div id="channel-badge" class="channel-badge" style="display:none;"></div>
+            <h1 id="main-title">Soutenir mes Projets</h1>
+            <div id="intro-text" class="intro">
+                Votre soutien permet de garantir l'indépendance de mes chaînes et de financer la production de contenus libres de toute influence.
+            </div>
+        </div>
 
         <!-- Section Don Ponctuel -->
         <h2>Faire un don ponctuel</h2>
-        <p>Pour une contribution unique, selon vos moyens et votre volonté.</p>
+        <p>Les infrastructures de paiement à Madagascar étant limitées, voici les méthodes les plus fiables pour me soutenir directement.</p>
 
         <div class="card">
             <h3>Western Union</h3>
-            <p>Méthode recommandée pour sa fiabilité avec le retrait en espèces.</p>
+            <p>Idéal pour les envois internationaux avec retrait en espèces.</p>
             <div class="info-block">
                 <strong>Pays :</strong> Madagascar<br>
-                <strong>Prénom et Nom :</strong> Houssen Mohsinaly<br>                
+                <strong>Prénom :</strong> Houssen<br>
+                <strong>Nom :</strong> Moshinaly<br>                
                 <strong>Ville :</strong> Antananarivo<br>
                 <strong>Téléphone :</strong> +261341854716
             </div>
-            <p style="font-size: 0.9em; color: #555;"><strong>Important :</strong> Veuillez choisir "<strong>Retrait en espèce</strong>" et me fournir le numéro de suivi (MTCN) par WhatsApp.</p>
-            <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn" target="_blank">Aller sur Western Union</a>
+            <p style="font-size: 0.9em; color: #555;"><strong>Important :</strong> Choisissez "<strong>Retrait en espèce</strong>" et envoyez-moi le numéro MTCN par WhatsApp.</p>
+            <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn" target="_blank">Site Western Union</a>
         </div>
         
         <div class="card">
-            <h3>Remitly & Taptap Send</h3>
-            <p>Pour un envoi direct sur un portefeuille mobile.</p>
+            <h3>Remitly & Taptap Send (Mobile Money)</h3>
+            <p>Envoi direct sur mon portefeuille mobile (Mvola).</p>
             <div class="info-block">
-                <strong>Prénom et Nom :</strong> Houssen Moshinaly<br>
-                <strong>Opérateur :</strong> Mvola<br>
-                <strong>Numéro de Tél :</strong> +261341854716
+                <strong>Prénom / Nom :</strong> Houssen Moshinaly<br>
+                <strong>Opérateur :</strong> Telma Mvola<br>
+                <strong>Numéro :</strong> +261341854716
             </div>
-            <a href="https://www.remitly.com/fr/fr/madagascar" class="btn" target="_blank">Aller sur Remitly</a>
-            <a href="https://www.taptapsend.com/country-landing-pages/transferts-madagascar" class="btn" target="_blank">Aller sur Taptap Send</a>
+            <a href="https://www.remitly.com/fr/fr/madagascar" class="btn" target="_blank">Remitly</a>
+            <a href="https://www.taptapsend.com/country-landing-pages/transferts-madagascar" class="btn" target="_blank">Taptap Send</a>
         </div>
 
         <div class="card">
-            <h3>Dons par Cryptomonnaie</h3>
-            <p>Une méthode directe et moderne pour soutenir la chaîne.</p>
+            <h3>Cryptomonnaies</h3>
+            <p>Rapide, moderne et sans frais bancaires.</p>
             
             <strong>USDT (Réseau TRC-20) :</strong>
             <div class="crypto-address">
@@ -213,41 +275,79 @@
         </div>
         
         <!-- Section Soutien Régulier -->
-        <h2>Devenir un pilier de la chaîne (Patreon)</h2>
+        <h2>Soutien Mensuel (Patreon)</h2>
         <p>
-            Le soutien régulier est ce qui permet de construire sur le long terme. Patreon est la plateforme idéale pour cela.
+            Pour devenir un pilier de la chaîne et accéder aux coulisses. C'est le moyen le plus stable de soutenir la création sur le long terme.
         </p>
         <a href="https://patreon.com/houssenmoshine" class="btn btn-patreon" target="_blank">Rejoindre sur Patreon</a>
 
         <!-- Section Contact -->
-        <h2>Un mot de remerciement</h2>
+        <h2>Me contacter</h2>
         <p>
-            Envoyer le MTCN pour Western Union est nécessaire. Pour les autres méthodes, c'est facultatif, mais un petit message sur WhatsApp me ferait très plaisir et me permettrait de vous remercier personnellement !
+            Pour le MTCN (Western Union) ou simplement pour un petit mot, je suis joignable sur WhatsApp.
         </p>
-        <a href="https://wa.me/261341854716" class="btn" target="_blank">Me contacter sur WhatsApp</a>
+        <a href="https://wa.me/261341854716" class="btn" target="_blank" style="background-color:#25D366;">WhatsApp Direct</a>
         
         <!-- Pied de page -->
         <div class="footer">
-            <p>Un immense merci pour votre générosité et votre confiance.</p>
-            <p><a href="https://www.youtube.com/@multipolarisfr">Retour à la chaîne Multipolaris</a></p>
+            <p>Merci pour votre générosité et votre confiance.</p>
+            <p>
+                <a href="https://www.youtube.com/@multipolarisfr">📺 Multipolaris</a> | 
+                <a href="https://www.youtube.com/c/HoussenMoshinaly">📺 Chaîne Tech & IA</a>
+            </p>
         </div>
     </div>
 
     <script>
+        // Fonction de copie (inchangée)
         function copyToClipboard(elementId, button) {
             const textToCopy = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalText = button.innerText;
                 button.innerText = 'Copié !';
-                button.style.backgroundColor = '#28a745'; // Vert de succès
+                button.style.backgroundColor = '#28a745';
                 setTimeout(() => {
                     button.innerText = originalText;
-                    button.style.backgroundColor = '#6c757d'; // Couleur originale
+                    button.style.backgroundColor = '#6c757d';
                 }, 2000);
             }).catch(err => {
-                console.error('Erreur lors de la copie : ', err);
+                console.error('Erreur : ', err);
             });
         }
+
+        // LOGIQUE DYNAMIQUE
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const channel = params.get('channel');
+            
+            const badge = document.getElementById('channel-badge');
+            const title = document.getElementById('main-title');
+            const intro = document.getElementById('intro-text');
+            const pageTitle = document.getElementById('page-title');
+
+            if (channel === 'multi') {
+                // Mode Multipolaris
+                document.body.classList.add('theme-multi');
+                badge.style.display = 'inline-block';
+                badge.innerText = 'Multipolaris';
+                title.innerText = 'Soutenir la chaîne Multipolaris';
+                intro.innerText = "Votre soutien est la clé de notre indépendance. Il permet de financer la recherche géopolitique et de garantir des analyses libres de toute influence.";
+                pageTitle.innerText = "Soutenir Multipolaris";
+            } 
+            else if (channel === 'tech') {
+                // Mode Houssen Moshinaly Tech
+                document.body.classList.add('theme-tech');
+                badge.style.display = 'inline-block';
+                badge.innerText = 'Houssen Moshinaly Tech';
+                title.innerText = 'Soutenir la chaîne Tech & IA';
+                intro.innerText = "Le matériel, les serveurs pour l'IA et le temps de recherche coûtent cher. Votre aide me permet de continuer à vulgariser la technologie.";
+                pageTitle.innerText = "Soutenir Houssen Moshinaly";
+            } 
+            else {
+                // Mode par défaut (Neutre / Hub)
+                // On garde les textes par défaut écrits dans le HTML
+            }
+        });
     </script>
 
 </body>
