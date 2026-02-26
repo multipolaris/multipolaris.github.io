@@ -4,388 +4,905 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Houssen Moshinaly - Soutien & Donations</title>
-    <!-- Favicon (optionnel, mettez une icone si vous en avez une) -->
-    <link rel="icon" href="https://www.youtube.com/s/desktop/1a5a0a33/img/favicon.ico"> 
+    <link rel="icon" href="https://www.youtube.com/s/desktop/1a5a0a33/img/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@400;600&display=swap');
-
-        /* --- THEMES --- */
         :root {
-            /* THÈME PAR DÉFAUT (NEUTRE / PERSO) */
-            --primary-color: #2c3e50;
-            --accent-color: #2980b9; 
-            --bg-color: #f4f6f8;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #dfe6e9;
-            --header-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+            
+            --border-radius: 12px;
+            --border-radius-sm: 6px;
+            
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --primary: #1e293b;
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.15);
+            --bg: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: rgba(203, 213, 225, 0.8);
+            --border-hover: #06b6d4;
+            --patreon: #FF424D;
+            --patreon-glow: rgba(255, 66, 77, 0.15);
+            --shadow: rgba(15, 23, 42, 0.08);
+            --shadow-hover: rgba(15, 23, 42, 0.12);
+        }
+
+        body.theme-dark {
+            --primary: #e2e8f0;
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.4);
+            --bg: #0a0e17;
+            --bg-card: rgba(15, 23, 42, 0.8);
+            --bg-card-hover: rgba(30, 41, 59, 0.9);
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: rgba(51, 65, 85, 0.6);
+            --border-hover: #06b6d4;
+            --patreon: #FF424D;
+            --patreon-glow: rgba(255, 66, 77, 0.4);
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
         }
 
         body.theme-multi {
-            /* THÈME MULTIPOLARIS (SÉRIEUX / MILITAIRE) */
-            --primary-color: #0A2647;
-            --accent-color: #14919B;
-            --bg-color: #eef2f5;
-            --header-gradient: linear-gradient(135deg, #0A2647 0%, #1a4a6e 100%);
+            --primary: #144272;
+            --accent: #14919B;
+            --accent-glow: rgba(20, 145, 155, 0.2);
+            --bg: #f0f9ff;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --text: #0c4a6e;
+            --text-muted: #0369a1;
+            --border: rgba(20, 184, 166, 0.4);
+            --border-hover: #14919B;
+            --patreon: #FF424D;
+            --patreon-glow: rgba(255, 66, 77, 0.15);
+            --shadow: rgba(20, 184, 166, 0.1);
+            --shadow-hover: rgba(20, 184, 166, 0.2);
+        }
+
+        body.theme-multi.theme-dark {
+            --primary: #e0f2fe;
+            --accent: #14919B;
+            --accent-glow: rgba(20, 145, 155, 0.4);
+            --bg: #0A2647;
+            --bg-card: rgba(10, 38, 71, 0.8);
+            --bg-card-hover: rgba(20, 66, 114, 0.9);
+            --text: #e0f2fe;
+            --text-muted: #7dd3fc;
+            --border: rgba(20, 82, 130, 0.6);
+            --border-hover: #14919B;
+            --patreon: #FF424D;
+            --patreon-glow: rgba(255, 66, 77, 0.4);
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
         }
 
         body.theme-tech {
-            /* THÈME TECH (MODERNE / IA) */
-            --primary-color: #111;
-            --accent-color: #6200ea;
-            --bg-color: #fafafa;
-            --header-gradient: linear-gradient(135deg, #6200ea 0%, #3700b3 100%);
+            --primary: #1e1b4b;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.2);
+            --bg: #faf5ff;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --text: #4c1d95;
+            --text-muted: #7c3aed;
+            --border: rgba(139, 92, 246, 0.3);
+            --border-hover: #8b5cf6;
+            --patreon: #FF424D;
+            --patreon-glow: rgba(255, 66, 77, 0.15);
+            --shadow: rgba(139, 92, 246, 0.1);
+            --shadow-hover: rgba(139, 92, 246, 0.2);
         }
 
-        /* --- GLOBAL --- */
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            line-height: 1.6;
+        body.theme-tech.theme-dark {
+            --primary: #e9d5ff;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.4);
+            --bg: #050505;
+            --bg-card: rgba(18, 18, 18, 0.8);
+            --bg-card-hover: rgba(30, 30, 30, 0.9);
+            --text: #e9d5ff;
+            --text-muted: #c4b5fd;
+            --border: rgba(139, 92, 246, 0.4);
+            --border-hover: #8b5cf6;
+            --patreon: #FF424D;
+            --patreon-glow: rgba(255, 66, 77, 0.4);
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            z-index: 100;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px var(--shadow-hover);
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
         }
 
         .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            overflow: hidden;
-            padding-bottom: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-sm);
+            position: relative;
+            z-index: 1;
         }
 
-        /* --- HEADER & PROFIL --- */
-        .header-hero {
-            background: var(--header-gradient);
-            color: white;
-            padding: 40px 20px;
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
             text-align: center;
+            padding: var(--space-xl) 0;
         }
 
-        .profile-img-container {
+        .avatar-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: var(--space-md);
+        }
+
+        .avatar {
             width: 120px;
             height: 120px;
-            background-color: white;
-            border-radius: 50%;
-            margin: 0 auto 15px auto;
-            padding: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .profile-img {
-            width: 100%;
-            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            background-color: #eee; /* Gris si pas d'image */
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+            transition: var(--transition-slow);
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--accent-glow);
         }
 
         h1 {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            font-size: 2.2em;
-        }
-        
-        .subtitle {
-            font-size: 1.1em;
-            opacity: 0.9;
-            margin-top: 5px;
-            font-weight: 300;
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .location-badge {
+        .role {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+        }
+
+        .location {
             display: inline-flex;
             align-items: center;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 12px;
+            gap: var(--space-xs);
+            background: var(--bg-card);
+            padding: var(--space-xs) var(--space-sm);
             border-radius: 20px;
-            font-size: 0.9em;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px var(--shadow);
         }
 
-        /* --- PROJETS (Visible en mode neutre) --- */
-        .my-projects {
-            padding: 20px 40px;
+        .intro {
             text-align: center;
-            background-color: #fff;
-            border-bottom: 1px solid var(--border-color);
-            display: none; /* Caché par défaut, activé via JS */
-        }
-        
-        .project-grid {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: var(--space-lg) 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .project-link {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
             text-decoration: none;
-            color: #333;
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: all 0.2s;
+            color: var(--text);
+            transition: var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: var(--transition-slow);
+        }
+
+        body.theme-dark .project-card::before {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 30px var(--shadow-hover), 0 0 20px var(--accent-glow);
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .patreon-section {
+            margin: var(--space-xl) 0;
+        }
+
+        .meta-prompt-section {
+            margin: var(--space-xl) 0;
+        }
+
+        .meta-prompt-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+            transition: var(--transition-slow);
+        }
+
+        .meta-prompt-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25), 0 0 30px rgba(139, 92, 246, 0.15);
+        }
+
+        .meta-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 40px;
+            transform: rotate(45deg);
+        }
+
+        .meta-prompt-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: #8b5cf6;
+            margin-bottom: var(--space-sm);
+        }
+
+        .meta-prompt-card p {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: var(--space-md);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .meta-features span {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .btn-meta {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-meta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .meta-price {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #8b5cf6 !important;
+            margin-top: var(--space-sm) !important;
+            margin-bottom: 0 !important;
+        }
+
+        .patreon-card {
+            background: linear-gradient(135deg, rgba(255,66,77,0.08) 0%, rgba(255,66,77,0.04) 100%);
+            border: 2px solid var(--patreon);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 3s ease-in-out infinite;
+            box-shadow: 0 8px 30px var(--patreon-glow);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 8px 30px var(--patreon-glow); }
+            50% { box-shadow: 0 12px 40px var(--patreon-glow), 0 0 20px var(--patreon-glow); }
+        }
+
+        .patreon-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--patreon);
+            margin-bottom: var(--space-sm);
+        }
+
+        .patreon-card p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: var(--space-md);
+        }
+
+        .btn-patreon {
+            display: inline-block;
+            background: var(--patreon);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--patreon-glow);
+        }
+
+        .btn-patreon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--patreon-glow);
+            filter: brightness(1.1);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text);
+            margin: var(--space-xl) 0 var(--space-md);
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-        .project-link:hover {
-            transform: translateY(-2px);
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-color: var(--accent-color);
-            color: var(--accent-color);
+            gap: var(--space-sm);
         }
 
-        /* --- CONTENU PRINCIPAL --- */
-        .content-area {
-            padding: 20px 40px;
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 2rem;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        h2 {
-            font-family: 'Roboto', sans-serif;
-            color: var(--primary-color);
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .intro-text {
-            text-align: center;
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 30px;
-            font-style: italic;
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
         }
 
-        /* --- CARTE DE PAIEMENT --- */
-        .card {
-            background-color: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            position: relative;
-            transition: transform 0.2s;
+        .payment-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            transition: var(--transition-slow);
+            box-shadow: 0 4px 20px var(--shadow);
         }
-        .card:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+
+        .payment-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 30px var(--shadow-hover), 0 0 15px var(--accent-glow);
+            transform: translateY(-3px);
         }
-        
-        .card h3 { margin-top: 0; color: var(--primary-color); }
+
+        .payment-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: var(--space-sm);
+        }
+
+        .payment-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
 
         .info-block {
-            background-color: var(--bg-color);
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-size: 0.95em;
+            background: rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--space-sm);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text);
+            margin: var(--space-sm) 0;
         }
-        .info-block strong { display: inline-block; min-width: 100px; }
 
-        /* BOUTONS */
-        .btn {
+        body.theme-dark .info-block {
+            background: rgba(0,0,0,0.3);
+        }
+
+        .info-block strong {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9em;
-            margin-top: 10px;
-            transition: opacity 0.2s;
+            min-width: 100px;
+            color: var(--accent);
         }
-        .btn:hover { opacity: 0.9; }
-        .btn-patreon { background-color: #FF424D; width: 100%; text-align: center; box-sizing: border-box; font-size: 1.1em; }
-        .btn-whatsapp { background-color: #25D366; width: 100%; text-align: center; box-sizing: border-box; }
 
-        /* CRYPTO */
+        .warning {
+            color: var(--patreon);
+            font-size: 0.85rem;
+            margin: var(--space-xs) 0;
+        }
+
         .crypto-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: #f1f3f5;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-family: monospace;
-            font-size: 0.9em;
-        }
-        .copy-btn {
-            background: #636e72;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px;
+            gap: var(--space-sm);
+            background: rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--space-sm);
+            margin: var(--space-xs) 0;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
         }
 
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.85em;
-            color: #888;
-            padding: 0 20px;
+        body.theme-dark .crypto-row {
+            background: rgba(0,0,0,0.3);
         }
-        .footer a { color: var(--accent-color); text-decoration: none; }
+
+        .crypto-addr {
+            flex: 1;
+            word-break: break-all;
+            color: var(--text);
+        }
+
+        .crypto-label {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+
+        .qr-container {
+            margin-top: var(--space-sm);
+            text-align: center;
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            margin: var(--space-xs) auto;
+            display: block;
+            border-radius: 8px;
+            padding: 8px;
+            background: white;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--bg);
+            color: var(--text);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .btn-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-section {
+            text-align: center;
+            margin: var(--space-xl) 0;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: #25D366;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: var(--space-lg) 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: var(--space-xl);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         @media (max-width: 600px) {
-            .container { margin: 0; border-radius: 0; }
-            .content-area { padding: 20px; }
-            .my-projects { padding: 20px; }
-            .crypto-row { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .copy-btn { width: 100%; }
+            .container {
+                padding: var(--space-sm);
+            }
+            
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .crypto-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+            
+            .copy-btn {
+                width: 100%;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn-link {
+                text-align: center;
+                display: block;
+            }
         }
     </style>
 </head>
-<body>
+<body class="theme-light">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <svg class="bg-pattern" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <pattern id="hexagons" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
+                <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="currentColor" stroke-width="1"/>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hexagons)"/>
+    </svg>
 
     <div class="container">
-        
-        <!-- EN-TÊTE (Change selon le contexte) -->
-        <div class="header-hero">
-            <!-- Image de profil (visible surtout en mode neutre) -->
-            <div id="profile-pic" class="profile-img-container" style="display:none;">
-                <!-- REMPLACEZ CE LIEN PAR VOTRE PHOTO -->
-                <img src="https://i.imgur.com/1ja7eRv.jpeg" alt="Houssen Moshinaly" class="profile-img">
+        <section class="hero reveal">
+            <div class="avatar-container" id="profile-pic" style="display:none;">
+                <img src="https://i.imgur.com/1ja7eRv.jpeg" alt="Houssen Moshinaly" class="avatar">
             </div>
-
             <h1 id="main-title">Houssen Moshinaly</h1>
-            <div id="subtitle" class="subtitle">Créateur de Contenu & Analyste</div>
-            
-            <div id="location-tag" class="location-badge" style="display:none;">
-                📍 Antananarivo, Madagascar
+            <p id="subtitle" class="role">Créateur de Contenu & Analyste</p>
+            <div id="location-tag" class="location" style="display:none;">
+                <span>📍</span>
+                <span>Antananarivo, Madagascar</span>
             </div>
-        </div>
+        </section>
 
-        <!-- SECTION PROFIL & PROJETS (Visible UNIQUEMENT en mode neutre) -->
-        <div id="projects-section" class="my-projects">
-            <p>Bienvenue sur ma page de soutien centralisée. Je suis le créateur derrière ces projets :</p>
-            <div class="project-grid">
-                <a href="https://www.youtube.com/@multipolarisfr" target="_blank" class="project-link">
-                    🌍 Multipolaris (Géopolitique)
+        <p id="dynamic-intro" class="intro reveal">
+            Depuis Madagascar, je produis des contenus indépendants. Votre soutien direct est essentiel pour contourner les obstacles géographiques et maintenir la qualité des chaînes.
+        </p>
+
+        <section id="projects-section" class="reveal" style="display:none;">
+            <div class="projects-grid">
+                <a href="https://www.youtube.com/@multipolarisfr" target="_blank" class="project-card">
+                    <span class="project-icon">🌍</span>
+                    <h3 class="project-title">Multipolaris</h3>
+                    <p class="project-desc">Analyses géopolitiques et militaires</p>
                 </a>
-                <a href="https://www.youtube.com/c/HoussenMoshinaly" target="_blank" class="project-link">
-                    🤖 Houssen Moshinaly (Tech & IA)
+                <a href="https://www.youtube.com/c/HoussenMoshinaly" target="_blank" class="project-card">
+                    <span class="project-icon">🤖</span>
+                    <h3 class="project-title">Houssen Moshinaly</h3>
+                    <p class="project-desc">Technologie et Intelligence Artificielle</p>
                 </a>
             </div>
-        </div>
+        </section>
 
-        <div class="content-area">
-            
-            <p id="dynamic-intro" class="intro-text">
-                Depuis Madagascar, je produis des contenus indépendants. Votre soutien direct est essentiel pour contourner les obstacles géographiques et maintenir la qualité des chaînes.
-            </p>
-
-            <!-- BOUTON PATREON (Mis en avant) -->
-            <div class="card" style="border-color: #FF424D; background: #fff5f5;">
-                <h3 style="color: #FF424D;">⭐ Soutien Mensuel (Patreon)</h3>
+        <section class="patreon-section reveal">
+            <div class="patreon-card">
+                <h2>⭐ Soutien Mensuel</h2>
                 <p>Le meilleur moyen de garantir la pérennité de mes projets et d'accéder aux contenus exclusifs.</p>
-                <a href="https://patreon.com/houssenmoshine" class="btn btn-patreon" target="_blank">Rejoindre les mécènes sur Patreon</a>
+                <a href="https://patreon.com/houssenmoshine" class="btn-patreon" target="_blank">Rejoindre sur Patreon</a>
             </div>
+        </section>
 
-            <h2>Faire un don ponctuel</h2>
-            <p>Pas d'abonnement, juste un geste libre selon vos moyens.</p>
+        <section class="meta-prompt-section reveal">
+            <div class="meta-prompt-card">
+                <div class="meta-badge">🚀 NOUVEAU</div>
+                <h2>Donnez une Âme à votre IA</h2>
+                <p>Je crée votre Meta-Prompt sur-mesure pour YouTube ou Blog. Automatisez votre style, le rythme audio et la génération d'images.</p>
+                <div class="meta-features">
+                    <span>🎭 Persona unique</span>
+                    <span>🎬 Structure audio TTS</span>
+                    <span>🖼️ Prompts IA intégrés</span>
+                    <span>🔍 Titres SEO</span>
+                </div>
+                <a href="consulting.html" class="btn-meta">Découvrir le service</a>
+                <p class="meta-price">À partir de 159 $</p>
+            </div>
+        </section>
 
-            <!-- WESTERN UNION -->
-            <div class="card">
+        <h2 class="section-title reveal">Faire un don ponctuel</h2>
+        <p class="intro reveal">Pas d'abonnement, juste un gesture libre selon vos moyens.</p>
+
+        <section class="payment-grid reveal">
+            <div class="payment-card">
                 <h3>Western Union</h3>
-                <p>La méthode la plus fiable pour me faire parvenir des fonds à Madagascar.</p>
+                <p>La méthode la plus fiable pour les transferts vers Madagascar.</p>
                 <div class="info-block">
                     <strong>Pays :</strong> Madagascar<br>
-                    <strong>Nom complet :</strong> Houssen Moshinaly<br>
+                    <strong>Nom :</strong> Houssen Moshinaly<br>
                     <strong>Ville :</strong> Antananarivo<br>
                     <strong>Tél :</strong> +261 34 18 547 16
                 </div>
-                <p style="font-size:0.9em; color:#d63031;"><strong>⚠️ Important :</strong> Choisissez "Retrait en espèce" et envoyez-moi le code MTCN par WhatsApp.</p>
-                <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn" target="_blank">Site Western Union</a>
+                <p class="warning">⚠️ Choisissez "Retrait en espèce" et envoyez le code MTCN par WhatsApp.</p>
+                <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn-link" target="_blank">Western Union →</a>
             </div>
 
-            <!-- MOBILE MONEY -->
-            <div class="card">
-                <h3>Remitly / Taptap Send / WorldRemit</h3>
-                <p>Envoi direct sur portefeuille mobile (Mobile Money).</p>
+            <div class="payment-card">
+                <h3>Mobile Money</h3>
+                <p>Envoi direct sur portefeuille mobile.</p>
                 <div class="info-block">
                     <strong>Opérateur :</strong> Telma Mvola<br>
                     <strong>Bénéficiaire :</strong> Houssen Moshinaly<br>
                     <strong>Numéro :</strong> +261 34 18 547 16
                 </div>
-                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <a href="https://www.remitly.com/" class="btn" target="_blank">Remitly</a>
-                    <a href="https://www.taptapsend.com/" class="btn" target="_blank">Taptap Send</a>
+                <div class="btn-group">
+                    <a href="https://www.remitly.com/" class="btn-link" target="_blank">Remitly</a>
+                    <a href="https://www.taptapsend.com/" class="btn-link" target="_blank">Taptap Send</a>
                 </div>
             </div>
 
-            <!-- CRYPTO -->
-            <div class="card">
+            <div class="payment-card">
                 <h3>Cryptomonnaies</h3>
                 <p>Rapide, discret et sans frais bancaires.</p>
                 
-                <div style="margin-bottom:15px;">
-                    <strong>USDT (Réseau TRC-20) :</strong>
+                <div style="margin-bottom:var(--space-sm);">
+                    <span class="crypto-label">USDT (TRC-20)</span>
                     <div class="crypto-row">
-                        <span id="usdt-addr" style="word-break:break-all;">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</span>
+                        <span id="usdt-addr" class="crypto-addr">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</span>
                         <button class="copy-btn" onclick="copyTo('usdt-addr', this)">Copier</button>
-                    </div>
+                    </div>                    
                 </div>
 
                 <div>
-                    <strong>Bitcoin (BTC) :</strong>
+                    <span class="crypto-label">Bitcoin (BTC)</span>
                     <div class="crypto-row">
-                        <span id="btc-addr" style="word-break:break-all;">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</span>
+                        <span id="btc-addr" class="crypto-addr">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</span>
                         <button class="copy-btn" onclick="copyTo('btc-addr', this)">Copier</button>
-                    </div>
+                    </div>                    
                 </div>
             </div>
+        </section>
 
-            <h2>Contact & Confirmation</h2>
-            <p>Pour le MTCN (Western Union) ou simplement pour discuter.</p>
-            <a href="https://wa.me/261341854716" class="btn btn-whatsapp" target="_blank">
-                💬 M'écrire sur WhatsApp (+261 34 18 547 16)
+        <section class="whatsapp-section reveal">
+            <a href="https://wa.me/261341854716" class="btn-whatsapp" target="_blank">
+                <span>💬</span>
+                <span>Contacter sur WhatsApp</span>
             </a>
+            <p style="margin-top:var(--space-sm); color:var(--text-muted); font-size:0.9rem;">
+                Pour le MTCN ou simplement pour discuter
+            </p>
+        </section>
 
-        </div>
-
-        <div class="footer">
-            <p>© 2024 Houssen Moshinaly - Tous droits réservés.</p>
-            <p>Merci de rendre ces projets possibles.</p>
-        </div>
+        <footer class="reveal">
+            <p>© 2024 Houssen Moshinaly - Tous droits réservés</p>
+            <p>Merci de rendre ces projets possibles</p>
+        </footer>
     </div>
 
     <script>
         function copyTo(id, btn) {
             const txt = document.getElementById(id).innerText;
             navigator.clipboard.writeText(txt).then(() => {
-                let original = btn.innerText;
-                btn.innerText = "Copié !";
-                btn.style.background = "#27ae60";
+                const originalText = btn.innerText;
+                btn.innerText = 'Copié !';
+                btn.classList.add('copied');
                 setTimeout(() => {
-                    btn.innerText = original;
-                    btn.style.background = "#636e72";
+                    btn.innerText = originalText;
+                    btn.classList.remove('copied');
                 }, 2000);
             });
         }
 
-        // GESTION DYNAMIQUE DE L'AFFICHAGE
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const channel = params.get('channel');
             
-            // Éléments du DOM
             const body = document.body;
             const title = document.getElementById('main-title');
             const subtitle = document.getElementById('subtitle');
@@ -394,33 +911,73 @@
             const projectsSection = document.getElementById('projects-section');
             const locationTag = document.getElementById('location-tag');
             const pageTitle = document.getElementById('page-title');
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    body.classList.add('theme-dark');
+                    body.classList.remove('theme-light');
+                    themeIcon.textContent = '☀️';
+                } else {
+                    body.classList.remove('theme-dark');
+                    body.classList.add('theme-light');
+                    themeIcon.textContent = '🌙';
+                }
+            }
+
+            let isDarkMode = false;
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                isDarkMode = true;
+                setTheme(true);
+            }
+
+            themeToggle.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                setTheme(isDarkMode);
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            });
 
             if (channel === 'multi') {
-                // --- MODE MULTIPOLARIS ---
                 body.classList.add('theme-multi');
-                title.innerText = "Soutenir Multipolaris";
-                subtitle.innerText = "Analyses Géopolitiques & Militaires";
-                intro.innerHTML = "La production de vidéos d'analyse militaire demande du temps et des ressources. Votre soutien garantit l'indépendance éditoriale de la chaîne.";
-                pageTitle.innerText = "Soutenir Multipolaris";
-                // On cache le profil perso pour rester sur le "Brand"
-            } 
-            else if (channel === 'tech') {
-                // --- MODE TECH ---
+                title.innerText = 'Soutenir Multipolaris';
+                subtitle.innerText = 'Analyses Géopolitiques & Militaires';
+                intro.innerHTML = 'La production de vidéos d\'analyse militaire demande du temps et des ressources. Votre soutien garantit l\'indépendance éditoriale de la chaîne.';
+                pageTitle.innerText = 'Soutenir Multipolaris';
+            } else if (channel === 'tech') {
                 body.classList.add('theme-tech');
-                title.innerText = "Houssen Moshinaly Tech";
-                subtitle.innerText = "Intelligence Artificielle & Technologie";
-                intro.innerHTML = "Tester les nouvelles IA, héberger des modèles et créer des tutoriels a un coût (GPU, Serveurs). Merci de m'aider à vulgariser le futur.";
-                pageTitle.innerText = "Soutenir la chaîne Tech";
-            } 
-            else {
-                // --- MODE NEUTRE / HUB (Défaut) ---
-                // C'est ici qu'on affiche tout le profil complet
-                profilePic.style.display = "block";
-                locationTag.style.display = "inline-flex";
-                projectsSection.style.display = "block";
-                
-                // On garde les textes par défaut du HTML
+                title.innerText = 'Houssen Moshinaly Tech';
+                subtitle.innerText = 'Intelligence Artificielle & Technologie';
+                intro.innerHTML = 'Tester les nouvelles IA, héberger des modèles et créer des tutoriels a un coût (GPU, Serveurs). Merci de m\'aider à vulgariser le futur.';
+                pageTitle.innerText = 'Soutenir la chaîne Tech';
+            } else {
+                profilePic.style.display = 'inline-block';
+                locationTag.style.display = 'inline-flex';
+                projectsSection.style.display = 'block';
             }
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
