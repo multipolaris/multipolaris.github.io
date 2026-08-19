@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houssen Moshinaly — Tech, IA & Services</title>
+    <link rel="icon" href="https://www.youtube.com/s/desktop/1a5a0a33/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --primary: #1e1b4b;
+            --accent: #8b5cf6;
+            --accent-2: #06b6d4;
+            --accent-glow: rgba(139, 92, 246, 0.2);
+            --bg: #faf5ff;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --text: #4c1d95;
+            --text-muted: #7c3aed;
+            --border: rgba(139, 92, 246, 0.3);
+            --border-hover: #8b5cf6;
+            --shadow: rgba(139, 92, 246, 0.1);
+            --shadow-hover: rgba(139, 92, 246, 0.2);
+        }
+
+        body.theme-dark {
+            --primary: #e9d5ff;
+            --accent: #a78bfa;
+            --accent-2: #22d3ee;
+            --accent-glow: rgba(139, 92, 246, 0.4);
+            --bg: #050505;
+            --bg-card: rgba(18, 18, 18, 0.85);
+            --text: #e9d5ff;
+            --text-muted: #c4b5fd;
+            --border: rgba(139, 92, 246, 0.4);
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: var(--space-sm);
+            left: var(--space-sm);
+            right: var(--space-sm);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .back-link, .theme-toggle {
+            pointer-events: auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px var(--shadow);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle { font-size: 1.4rem; }
+        .back-link:hover, .theme-toggle:hover { transform: scale(1.1); border-color: var(--accent); }
+
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.05;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-sm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .hero {
+            text-align: center;
+            padding: var(--space-xl) 0 var(--space-lg);
+            margin-top: var(--space-md);
+        }
+
+        .channel-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text);
+            margin: var(--space-xl) 0 var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 2rem;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .featured-service {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border: 2px solid var(--accent);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px var(--accent-glow);
+            margin: var(--space-lg) 0;
+            transition: var(--transition);
+        }
+
+        .featured-service:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 40px;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .featured-service h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: var(--space-sm);
+            color: var(--accent);
+        }
+
+        .featured-service p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+            max-width: 600px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .feature-list span {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .featured-price {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        .featured-price span { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .tier-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            box-shadow: 0 12px 40px var(--shadow-hover);
+        }
+
+        .tier-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+        .tier-name {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+        }
+        .tier-price {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        .tier-price span { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+
+        .tier-features { list-style: none; }
+        .tier-features li {
+            padding: var(--space-xs) 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-xs);
+        }
+        .tier-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-hover);
+            box-shadow: 0 12px 30px var(--shadow-hover);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-xs);
+        }
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+        }
+        .service-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .payment-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            margin-top: var(--space-lg);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .payment-tabs {
+            display: flex;
+            gap: var(--space-xs);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .payment-tab {
+            padding: var(--space-sm) var(--space-md);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .payment-tab:hover { color: var(--accent); }
+        .payment-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        .payment-panel { display: none; animation: fadeIn 0.3s ease; }
+        .payment-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .info-block {
+            background: rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text);
+            margin: var(--space-sm) 0;
+        }
+
+        body.theme-dark .info-block { background: rgba(0,0,0,0.3); }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-xs) 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: var(--accent); font-weight: 600; min-width: 100px; }
+        .info-value { flex: 1; text-align: right; word-break: break-word; }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+            margin-left: var(--space-sm);
+        }
+
+        .copy-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .copy-btn.copied { background: #10b981; }
+
+        .warning {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid #f59e0b;
+            color: var(--text);
+            padding: var(--space-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+            margin-top: var(--space-sm);
+        }
+
+        .external-link {
+            display: inline-block;
+            margin-top: var(--space-sm);
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .external-link:hover { text-decoration: underline; }
+
+        .crypto-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+        .crypto-block {
+            background: rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--space-sm);
+        }
+
+        body.theme-dark .crypto-block { background: rgba(0,0,0,0.3); }
+
+        .crypto-label {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+
+        .crypto-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .crypto-addr {
+            flex: 1;
+            word-break: break-all;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            margin: var(--space-sm) auto 0;
+            display: block;
+            background: white;
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .whatsapp-section {
+            text-align: center;
+            margin: var(--space-xl) 0;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: #25D366;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: var(--space-lg) 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: var(--space-xl);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .container { padding: var(--space-sm); }
+            h1 { font-size: 2rem; }
+            .info-row { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .info-value { text-align: left; }
+            .copy-btn { margin-left: 0; width: 100%; margin-top: var(--space-xs); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html" class="back-link" aria-label="Retour accueil">←</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">
+            <span id="theme-icon">🌙</span>
+        </button>
+    </nav>
+
+    <svg class="bg-pattern" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <pattern id="hexagons" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
+                <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="currentColor" stroke-width="1"/>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hexagons)"/>
+    </svg>
+
+    <div class="container">
+        <section class="hero reveal">
+            <span class="channel-badge">🤖 Tech & IA</span>
+            <h1>Automatisez votre création de contenu avec l'IA</h1>
+            <p class="hero-subtitle">
+                Tests, tutoriels, expérimentations et services sur-mesure pour créateurs, entrepreneurs et équipes de contenu qui veulent passer à l'échelle.
+            </p>
+        </section>
+
+        <h2 class="section-title reveal">Service vedette — Meta-Prompt sur mesure</h2>
+
+        <div class="featured-service reveal">
+            <span class="featured-badge">🚀 Vedette</span>
+            <h3>Donnez une Âme à votre IA</h3>
+            <p>
+                Je code votre <strong>Meta-Prompt sur-mesure</strong> pour YouTube, blog ou newsletter. Automatisez votre style narratif, le rythme audio TTS et la génération d'images B-Roll en un seul clic. Fini le ton "robotique" de ChatGPT.
+            </p>
+            <div class="feature-list">
+                <span>🎭 Persona narratif unique</span>
+                <span>🎬 Structure audio TTS</span>
+                <span>🖼️ Prompts images intégrés</span>
+                <span>🔍 Titres SEO & percutants</span>
+                <span>🎯 Adapté à votre niche</span>
+                <span>✨ Garantie retouche 7 jours</span>
+            </div>
+            <div class="featured-price">À partir de 159 $<span> — livraison 5-7 jours</span></div>
+            <a href="consulting.html" class="btn-primary">Découvrir le service complet →</a>
+        </div>
+
+        <h2 class="section-title reveal">Soutien mensuel récurrent</h2>
+        <p class="reveal" style="color:var(--text-muted); margin-bottom:var(--space-md);">
+            Tester les nouvelles IA, héberger des modèles et produire des tutos a un coût (GPU, serveurs, abonnements). Merci de m'aider à vulgariser le futur.
+        </p>
+
+        <div class="tiers-grid reveal">
+            <div class="tier-card">
+                <span class="tier-icon">⚡</span>
+                <h3 class="tier-name">Tech Supporter</h3>
+                <div class="tier-price">5 $<span>/mois</span></div>
+                <ul class="tier-features">
+                    <li>Remerciements dans les vidéos</li>
+                    <li>Accès aux tutoriels privés</li>
+                    <li>Salon Discord dédié</li>
+                </ul>
+            </div>
+
+            <div class="tier-card">
+                <span class="tier-icon">🔬</span>
+                <h3 class="tier-name">AI Insider</h3>
+                <div class="tier-price">15 $<span>/mois</span></div>
+                <ul class="tier-features">
+                    <li>Tous les avantages Supporter</li>
+                    <li>Accès aux expérimentations</li>
+                    <li>Vidéos avancées réservées</li>
+                    <li>Partage des prompts utilisés</li>
+                </ul>
+            </div>
+
+            <div class="tier-card">
+                <span class="tier-icon">🧪</span>
+                <h3 class="tier-name">Lab Partner</h3>
+                <div class="tier-price">30 $<span>/mois</span></div>
+                <ul class="tier-features">
+                    <li>Tous les avantages précédents</li>
+                    <li>Accès beta aux outils développés</li>
+                    <li>Sessions Q&A mensuelles</li>
+                    <li>Tests de vos propres prompts</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title reveal">Autres services sur mesure</h2>
+        <p class="reveal" style="color:var(--text-muted); margin-bottom:var(--space-md);">
+            Pour les créateurs, entreprises et équipes qui veulent intégrer l'IA dans leur workflow de production.
+        </p>
+
+        <div class="services-grid reveal">
+            <div class="service-card">
+                <h3>🎬 Meta-Prompt Pro (multi-plateformes)</h3>
+                <p>Persona complet + adaptation YouTube, TikTok, blog, newsletter. Images, SEO et TTS inclus.</p>
+                <div class="service-price">299 $</div>
+            </div>
+            <div class="service-card">
+                <h3>⚙️ Automatisation chaîne YouTube</h3>
+                <p>Pipeline complet : script → TTS → images → montage semi-automatique avec outils open-source.</p>
+                <div class="service-price">499 $</div>
+            </div>
+            <div class="service-card">
+                <h3>🎯 Consultation stratégique IA (1h)</h3>
+                <p>Audit de votre workflow actuel et recommandations personnalisées pour gagner du temps.</p>
+                <div class="service-price">120 $</div>
+            </div>
+            <div class="service-card">
+                <h3>🎓 Formation IA pour créateurs</h3>
+                <p>3 sessions de 1h + support email 30 jours. Apprenez à maîtriser les outils IA de A à Z.</p>
+                <div class="service-price">450 $</div>
+            </div>
+            <div class="service-card">
+                <h3>🔄 Refonte complète de chaîne</h3>
+                <p>Stratégie, identité visuelle, workflow IA, premiers livrables. Accompagnement 1 mois.</p>
+                <div class="service-price">890 $</div>
+            </div>
+            <div class="service-card">
+                <h3>📧 Newsletter IA sur mesure</h3>
+                <p>Meta-Prompt + pipeline pour produire une newsletter hebdomadaire entièrement assistée par IA.</p>
+                <div class="service-price">350 $</div>
+            </div>
+        </div>
+
+        <h2 class="section-title reveal">Comment payer</h2>
+
+        <section class="payment-section reveal">
+            <div class="payment-tabs">
+                <button class="payment-tab active" data-panel="mvola">📱 Mvola</button>
+                <button class="payment-tab" data-panel="western">💸 Western Union</button>
+                <button class="payment-tab" data-panel="remitly">🌐 Remitly / TapTap</button>
+                <button class="payment-tab" data-panel="crypto">₿ Crypto</button>
+            </div>
+
+            <div class="payment-panel active" id="panel-mvola">
+                <h3 style="font-family:var(--font-heading); margin-bottom:var(--space-sm);">Transfert direct Mvola</h3>
+                <p style="color:var(--text-muted); margin-bottom:var(--space-sm);">
+                    Méthode la plus simple depuis la plupart des pays. Envoi direct sur le portefeuille mobile.
+                </p>
+                <div class="info-block">
+                    <div class="info-row">
+                        <span class="info-label">Pays</span>
+                        <span class="info-value">Madagascar</span>
+                        <button class="copy-btn" onclick="copyText('Madagascar', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Opérateur</span>
+                        <span class="info-value">Mvola</span>
+                        <button class="copy-btn" onclick="copyText('Mvola', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Bénéficiaire</span>
+                        <span class="info-value">Houssen Mohsinaly</span>
+                        <button class="copy-btn" onclick="copyText('Houssen Mohsinaly', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Téléphone</span>
+                        <span class="info-value">+261 34 18 547 16</span>
+                        <button class="copy-btn" onclick="copyText('+261341854716', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Adresse</span>
+                        <span class="info-value">Lot IVW 5A - Anosizato Est</span>
+                        <button class="copy-btn" onclick="copyText('Lot IVW 5A - Anosizato Est', this)">Copier</button>
+                    </div>
+                </div>
+                <div class="warning">
+                    <span>💡</span>
+                    <span>Envoyez sur le <strong>portefeuille mobile Mvola</strong>. Merci de me prévenir sur WhatsApp après l'envoi avec la preuve.</span>
+                </div>
+            </div>
+
+            <div class="payment-panel" id="panel-western">
+                <h3 style="font-family:var(--font-heading); margin-bottom:var(--space-sm);">Western Union</h3>
+                <p style="color:var(--text-muted); margin-bottom:var(--space-sm);">
+                    Choisissez l'option <strong>"transfert vers un portefeuille mobile"</strong> (mobile wallet) avec les coordonnées ci-dessous.
+                </p>
+                <div class="info-block">
+                    <div class="info-row">
+                        <span class="info-label">Pays</span>
+                        <span class="info-value">Madagascar</span>
+                        <button class="copy-btn" onclick="copyText('Madagascar', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Bénéficiaire</span>
+                        <span class="info-value">Houssen Mohsinaly</span>
+                        <button class="copy-btn" onclick="copyText('Houssen Mohsinaly', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Téléphone</span>
+                        <span class="info-value">+261 34 18 547 16</span>
+                        <button class="copy-btn" onclick="copyText('+261341854716', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Adresse</span>
+                        <span class="info-value">Lot IVW 5A - Anosizato Est</span>
+                        <button class="copy-btn" onclick="copyText('Lot IVW 5A - Anosizato Est', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Opérateur</span>
+                        <span class="info-value">Mvola</span>
+                        <button class="copy-btn" onclick="copyText('Mvola', this)">Copier</button>
+                    </div>
+                </div>
+                <div class="warning">
+                    <span>⚠️</span>
+                    <span><strong>Important :</strong> sélectionnez "Mobile Wallet / Mvola" comme mode de réception. Évitez le retrait en agence avec MTCN.</span>
+                </div>
+                <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="external-link" target="_blank">Ouvrir Western Union →</a>
+            </div>
+
+            <div class="payment-panel" id="panel-remitly">
+                <h3 style="font-family:var(--font-heading); margin-bottom:var(--space-sm);">Remitly / TapTap Send</h3>
+                <p style="color:var(--text-muted); margin-bottom:var(--space-sm);">
+                    Ces services envoient directement sur mon portefeuille mobile Mvola. Frais souvent plus bas que Western Union.
+                </p>
+                <div class="info-block">
+                    <div class="info-row">
+                        <span class="info-label">Pays</span>
+                        <span class="info-value">Madagascar</span>
+                        <button class="copy-btn" onclick="copyText('Madagascar', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Opérateur</span>
+                        <span class="info-value">Mvola</span>
+                        <button class="copy-btn" onclick="copyText('Mvola', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Bénéficiaire</span>
+                        <span class="info-value">Houssen Mohsinaly</span>
+                        <button class="copy-btn" onclick="copyText('Houssen Mohsinaly', this)">Copier</button>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Téléphone</span>
+                        <span class="info-value">+261 34 18 547 16</span>
+                        <button class="copy-btn" onclick="copyText('+261341854716', this)">Copier</button>
+                    </div>
+                </div>
+                <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap; margin-top:var(--space-sm);">
+                    <a href="https://www.remitly.com/" class="external-link" target="_blank">Remitly →</a>
+                    <a href="https://www.taptapsend.com/" class="external-link" target="_blank">TapTap Send →</a>
+                </div>
+            </div>
+
+            <div class="payment-panel" id="panel-crypto">
+                <h3 style="font-family:var(--font-heading); margin-bottom:var(--space-sm);">Cryptomonnaies</h3>
+                <p style="color:var(--text-muted); margin-bottom:var(--space-sm);">
+                    Rapide, discret, sans frais bancaires. Vérifiez bien le réseau avant d'envoyer.
+                </p>
+                <div class="crypto-list">
+                    <div class="crypto-block">
+                        <span class="crypto-label">USDT — Réseau TRC-20 (Tron)</span>
+                        <div class="crypto-row">
+                            <span class="crypto-addr">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</span>
+                            <button class="copy-btn" onclick="copyText('TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo', this)">Copier</button>
+                        </div>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo" alt="QR USDT TRC20" class="qr-code">
+                    </div>
+                    <div class="crypto-block">
+                        <span class="crypto-label">Bitcoin (BTC)</span>
+                        <div class="crypto-row">
+                            <span class="crypto-addr">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</span>
+                            <button class="copy-btn" onclick="copyText('1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm', this)">Copier</button>
+                        </div>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm" alt="QR BTC" class="qr-code">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="whatsapp-section reveal">
+            <a href="https://wa.me/261341854716" class="btn-whatsapp" target="_blank">
+                <span>💬</span>
+                <span>Me prévenir sur WhatsApp après le paiement</span>
+            </a>
+        </section>
+
+        <footer class="reveal">
+            <p>© 2026 Houssen Moshinaly — <a href="index.html">Retour à l'accueil</a></p>
+            <p>Merci de soutenir la vulgarisation tech et IA.</p>
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme');
+
+        function applyTheme(dark) {
+            body.classList.toggle('theme-dark', dark);
+            themeIcon.textContent = dark ? '☀️' : '🌙';
+        }
+        applyTheme(savedTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('theme-dark');
+            applyTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.innerText;
+                btn.innerText = '✓ Copié';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        document.querySelectorAll('.payment-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.payment-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
