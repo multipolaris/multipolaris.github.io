@@ -3,147 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Houssen Moshinaly - Soutien & Donations</title>
+    <title>Houssen Moshinaly — Soutien & Services</title>
+    <meta name="description" content="Soutenez mes projets indépendants depuis Madagascar : géopolitique (Multipolaris) et technologie/IA.">
     <link rel="icon" href="https://www.youtube.com/s/desktop/1a5a0a33/img/favicon.ico">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --font-heading: 'Space Grotesk', sans-serif;
             --font-body: 'DM Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            
             --space-xs: 0.5rem;
             --space-sm: 1rem;
             --space-md: 2rem;
             --space-lg: 3rem;
             --space-xl: 4rem;
-            
-            --border-radius: 12px;
-            --border-radius-sm: 6px;
-            
-            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            --primary: #1e293b;
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --primary: #0f172a;
             --accent: #06b6d4;
             --accent-glow: rgba(6, 182, 212, 0.15);
             --bg: #f8fafc;
-            --bg-card: rgba(255, 255, 255, 0.9);
-            --bg-card-hover: rgba(255, 255, 255, 1);
+            --bg-card: rgba(255, 255, 255, 0.92);
             --text: #0f172a;
             --text-muted: #64748b;
             --border: rgba(203, 213, 225, 0.8);
-            --border-hover: #06b6d4;
-            --patreon: #FF424D;
-            --patreon-glow: rgba(255, 66, 77, 0.15);
             --shadow: rgba(15, 23, 42, 0.08);
-            --shadow-hover: rgba(15, 23, 42, 0.12);
         }
 
         body.theme-dark {
             --primary: #e2e8f0;
-            --accent: #06b6d4;
-            --accent-glow: rgba(6, 182, 212, 0.4);
+            --accent: #22d3ee;
+            --accent-glow: rgba(34, 211, 238, 0.4);
             --bg: #0a0e17;
             --bg-card: rgba(15, 23, 42, 0.8);
-            --bg-card-hover: rgba(30, 41, 59, 0.9);
             --text: #e2e8f0;
             --text-muted: #94a3b8;
             --border: rgba(51, 65, 85, 0.6);
-            --border-hover: #06b6d4;
-            --patreon: #FF424D;
-            --patreon-glow: rgba(255, 66, 77, 0.4);
             --shadow: rgba(0, 0, 0, 0.3);
-            --shadow-hover: rgba(0, 0, 0, 0.5);
         }
 
-        body.theme-multi {
-            --primary: #144272;
-            --accent: #14919B;
-            --accent-glow: rgba(20, 145, 155, 0.2);
-            --bg: #f0f9ff;
-            --bg-card: rgba(255, 255, 255, 0.95);
-            --bg-card-hover: rgba(255, 255, 255, 1);
-            --text: #0c4a6e;
-            --text-muted: #0369a1;
-            --border: rgba(20, 184, 166, 0.4);
-            --border-hover: #14919B;
-            --patreon: #FF424D;
-            --patreon-glow: rgba(255, 66, 77, 0.15);
-            --shadow: rgba(20, 184, 166, 0.1);
-            --shadow-hover: rgba(20, 184, 166, 0.2);
-        }
-
-        body.theme-multi.theme-dark {
-            --primary: #e0f2fe;
-            --accent: #14919B;
-            --accent-glow: rgba(20, 145, 155, 0.4);
-            --bg: #0A2647;
-            --bg-card: rgba(10, 38, 71, 0.8);
-            --bg-card-hover: rgba(20, 66, 114, 0.9);
-            --text: #e0f2fe;
-            --text-muted: #7dd3fc;
-            --border: rgba(20, 82, 130, 0.6);
-            --border-hover: #14919B;
-            --patreon: #FF424D;
-            --patreon-glow: rgba(255, 66, 77, 0.4);
-            --shadow: rgba(0, 0, 0, 0.3);
-            --shadow-hover: rgba(0, 0, 0, 0.5);
-        }
-
-        body.theme-tech {
-            --primary: #1e1b4b;
-            --accent: #8b5cf6;
-            --accent-glow: rgba(139, 92, 246, 0.2);
-            --bg: #faf5ff;
-            --bg-card: rgba(255, 255, 255, 0.95);
-            --bg-card-hover: rgba(255, 255, 255, 1);
-            --text: #4c1d95;
-            --text-muted: #7c3aed;
-            --border: rgba(139, 92, 246, 0.3);
-            --border-hover: #8b5cf6;
-            --patreon: #FF424D;
-            --patreon-glow: rgba(255, 66, 77, 0.15);
-            --shadow: rgba(139, 92, 246, 0.1);
-            --shadow-hover: rgba(139, 92, 246, 0.2);
-        }
-
-        body.theme-tech.theme-dark {
-            --primary: #e9d5ff;
-            --accent: #8b5cf6;
-            --accent-glow: rgba(139, 92, 246, 0.4);
-            --bg: #050505;
-            --bg-card: rgba(18, 18, 18, 0.8);
-            --bg-card-hover: rgba(30, 30, 30, 0.9);
-            --text: #e9d5ff;
-            --text-muted: #c4b5fd;
-            --border: rgba(139, 92, 246, 0.4);
-            --border-hover: #8b5cf6;
-            --patreon: #FF424D;
-            --patreon-glow: rgba(255, 66, 77, 0.4);
-            --shadow: rgba(0, 0, 0, 0.3);
-            --shadow-hover: rgba(0, 0, 0, 0.5);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-body);
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
             min-height: 100vh;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
         }
 
         .theme-toggle {
@@ -154,36 +66,30 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             transition: var(--transition);
             box-shadow: 0 2px 10px var(--shadow);
+            backdrop-filter: blur(10px);
         }
 
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            transform: scale(1.1);
-            box-shadow: 0 4px 20px var(--shadow-hover);
-        }
+        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
 
         .bg-pattern {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.06;
+            opacity: 0.05;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: var(--space-md) var(--space-sm);
             position: relative;
@@ -195,47 +101,32 @@
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hero {
-            text-align: center;
-            padding: var(--space-xl) 0;
-        }
-
-        .avatar-container {
-            display: inline-block;
-            position: relative;
-            margin-bottom: var(--space-md);
-        }
+        .hero { text-align: center; padding: var(--space-xl) 0 var(--space-lg); }
 
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow);
-            transition: var(--transition-slow);
-        }
-
-        .avatar:hover {
-            transform: scale(1.05);
             box-shadow: 0 0 40px var(--accent-glow);
+            margin-bottom: var(--space-md);
+            transition: var(--transition);
         }
+        .avatar:hover { transform: scale(1.05); }
 
         h1 {
             font-family: var(--font-heading);
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: var(--space-xs);
             background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.1;
         }
 
         .role {
@@ -262,20 +153,32 @@
             text-align: center;
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin: var(--space-lg) 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: var(--space-lg) auto;
+            max-width: 700px;
         }
 
-        .projects-grid {
+        .channels-label {
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: var(--space-xl) 0 var(--space-md);
+        }
+
+        .channels-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1.2fr 1fr;
             gap: var(--space-md);
             margin: var(--space-lg) 0;
         }
 
-        .project-card {
+        @media (max-width: 768px) {
+            .channels-grid { grid-template-columns: 1fr; }
+        }
+
+        .channel-card {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
@@ -283,387 +186,88 @@
             padding: var(--space-md);
             text-decoration: none;
             color: var(--text);
-            transition: var(--transition-slow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 20px var(--shadow);
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: var(--transition-slow);
-        }
-
-        body.theme-dark .project-card::before {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .project-card:hover {
+        .channel-card:hover {
             transform: translateY(-5px);
-            border-color: var(--border-hover);
-            box-shadow: 0 8px 30px var(--shadow-hover), 0 0 20px var(--accent-glow);
+            box-shadow: 0 12px 40px var(--shadow);
         }
 
-        .project-icon {
-            font-size: 2rem;
-            margin-bottom: var(--space-sm);
-            display: block;
+        .channel-card.multi {
+            border: 2px solid #14919B;
+            background: linear-gradient(135deg, rgba(20, 145, 155, 0.05) 0%, rgba(10, 38, 71, 0.02) 100%);
         }
+        .channel-card.multi:hover { border-color: #0d6b73; box-shadow: 0 12px 40px rgba(20, 145, 155, 0.2); }
 
-        .project-title {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: var(--space-xs);
+        .channel-card.tech {
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.04) 0%, rgba(6, 182, 212, 0.02) 100%);
         }
+        .channel-card.tech:hover { border-color: #8b5cf6; box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2); }
 
-        .project-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .patreon-section {
-            margin: var(--space-xl) 0;
-        }
-
-        .meta-prompt-section {
-            margin: var(--space-xl) 0;
-        }
-
-        .meta-prompt-card {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
-            border: 2px solid #8b5cf6;
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
-            transition: var(--transition-slow);
-        }
-
-        .meta-prompt-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25), 0 0 30px rgba(139, 92, 246, 0.15);
-        }
-
-        .meta-badge {
+        .featured-badge {
             position: absolute;
             top: 15px;
             right: -35px;
-            background: #8b5cf6;
+            background: #14919B;
             color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.7rem;
+            font-weight: 700;
             padding: 4px 40px;
             transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .meta-prompt-card h2 {
+        .channel-icon { font-size: 2.5rem; margin-bottom: var(--space-sm); }
+        .channel-title {
             font-family: var(--font-heading);
             font-size: 1.6rem;
-            color: #8b5cf6;
-            margin-bottom: var(--space-sm);
-        }
-
-        .meta-prompt-card p {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: var(--space-md);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .meta-features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-md);
-        }
-
-        .meta-features span {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .btn-meta {
-            display: inline-block;
-            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
-            color: white;
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            font-weight: 600;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--border-radius-sm);
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-        }
-
-        .btn-meta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .meta-price {
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            color: #8b5cf6 !important;
-            margin-top: var(--space-sm) !important;
-            margin-bottom: 0 !important;
-        }
-
-        .patreon-card {
-            background: linear-gradient(135deg, rgba(255,66,77,0.08) 0%, rgba(255,66,77,0.04) 100%);
-            border: 2px solid var(--patreon);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            animation: pulse-glow 3s ease-in-out infinite;
-            box-shadow: 0 8px 30px var(--patreon-glow);
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 8px 30px var(--patreon-glow); }
-            50% { box-shadow: 0 12px 40px var(--patreon-glow), 0 0 20px var(--patreon-glow); }
-        }
-
-        .patreon-card h2 {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--patreon);
-            margin-bottom: var(--space-sm);
-        }
-
-        .patreon-card p {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: var(--space-md);
-        }
-
-        .btn-patreon {
-            display: inline-block;
-            background: var(--patreon);
-            color: white;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
             font-weight: 700;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--border-radius-sm);
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px var(--patreon-glow);
+            margin-bottom: var(--space-xs);
         }
-
-        .btn-patreon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--patreon-glow);
-            filter: brightness(1.1);
+        .channel-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+            flex-grow: 1;
         }
-
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--text);
-            margin: var(--space-xl) 0 var(--space-md);
-            display: flex;
+        .channel-cta {
+            display: inline-flex;
             align-items: center;
-            gap: var(--space-sm);
+            gap: var(--space-xs);
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: auto;
+            font-size: 0.95rem;
         }
 
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 2rem;
-            background: var(--accent);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .payment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-md);
-        }
-
-        .payment-card {
+        .info-box {
             background: var(--bg-card);
-            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: var(--border-radius);
             padding: var(--space-md);
-            transition: var(--transition-slow);
+            margin: var(--space-xl) 0;
             box-shadow: 0 4px 20px var(--shadow);
         }
-
-        .payment-card:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 8px 30px var(--shadow-hover), 0 0 15px var(--accent-glow);
-            transform: translateY(-3px);
-        }
-
-        .payment-card h3 {
+        .info-box h3 {
             font-family: var(--font-heading);
             font-size: 1.3rem;
             color: var(--accent);
             margin-bottom: var(--space-sm);
         }
+        .info-box p { color: var(--text-muted); }
 
-        .payment-card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: var(--space-sm);
-        }
-
-        .info-block {
-            background: rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-            border-radius: var(--border-radius-sm);
-            padding: var(--space-sm);
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text);
-            margin: var(--space-sm) 0;
-        }
-
-        body.theme-dark .info-block {
-            background: rgba(0,0,0,0.3);
-        }
-
-        .info-block strong {
-            display: inline-block;
-            min-width: 100px;
-            color: var(--accent);
-        }
-
-        .warning {
-            color: var(--patreon);
-            font-size: 0.85rem;
-            margin: var(--space-xs) 0;
-        }
-
-        .crypto-row {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            background: rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-            border-radius: var(--border-radius-sm);
-            padding: var(--space-sm);
-            margin: var(--space-xs) 0;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-        }
-
-        body.theme-dark .crypto-row {
-            background: rgba(0,0,0,0.3);
-        }
-
-        .crypto-addr {
-            flex: 1;
-            word-break: break-all;
-            color: var(--text);
-        }
-
-        .crypto-label {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .copy-btn {
-            background: var(--bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--border-radius-sm);
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .copy-btn:hover {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-        }
-
-        .copy-btn.copied {
-            background: #10b981;
-            border-color: #10b981;
-            color: white;
-        }
-
-        .qr-container {
-            margin-top: var(--space-sm);
-            text-align: center;
-        }
-
-        .qr-code {
-            width: 120px;
-            height: 120px;
-            margin: var(--space-xs) auto;
-            display: block;
-            border-radius: 8px;
-            padding: 8px;
-            background: white;
-            box-shadow: 0 4px 12px var(--shadow);
-        }
-
-        .btn-link {
-            display: inline-block;
-            background: var(--bg);
-            color: var(--text);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--border-radius-sm);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            border: 1px solid var(--border);
-        }
-
-        .btn-link:hover {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: var(--space-sm);
-            flex-wrap: wrap;
-        }
-
-        .whatsapp-section {
+        .contact-section {
             text-align: center;
             margin: var(--space-xl) 0;
         }
-
         .btn-whatsapp {
             display: inline-flex;
             align-items: center;
@@ -677,10 +281,8 @@
             border-radius: var(--border-radius-sm);
             text-decoration: none;
             transition: var(--transition);
-            border: none;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
-
         .btn-whatsapp:hover {
             background: #20bd5a;
             transform: translateY(-2px);
@@ -695,59 +297,17 @@
             border-top: 1px solid var(--border);
             margin-top: var(--space-xl);
         }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
 
         @media (max-width: 600px) {
-            .container {
-                padding: var(--space-sm);
-            }
-            
-            .theme-toggle {
-                width: 44px;
-                height: 44px;
-                font-size: 1.3rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .payment-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .crypto-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--space-xs);
-            }
-            
-            .copy-btn {
-                width: 100%;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-            }
-            
-            .btn-link {
-                text-align: center;
-                display: block;
-            }
+            .container { padding: var(--space-sm); }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
-<body class="theme-light">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">
         <span id="theme-icon">🌙</span>
     </button>
 
@@ -762,223 +322,94 @@
 
     <div class="container">
         <section class="hero reveal">
-            <div class="avatar-container" id="profile-pic" style="display:none;">
-                <img src="https://i.imgur.com/1ja7eRv.jpeg" alt="Houssen Moshinaly" class="avatar">
-            </div>
-            <h1 id="main-title">Houssen Moshinaly</h1>
-            <p id="subtitle" class="role">Créateur de Contenu & Analyste</p>
-            <div id="location-tag" class="location" style="display:none;">
+            <img src="https://i.imgur.com/1ja7eRv.jpeg" alt="Houssen Moshinaly" class="avatar">
+            <h1>Houssen Moshinaly</h1>
+            <p class="role">Créateur indépendant — Géopolitique, Tech & IA</p>
+            <div class="location">
                 <span>📍</span>
                 <span>Antananarivo, Madagascar</span>
             </div>
         </section>
 
-        <p id="dynamic-intro" class="intro reveal">
-            Depuis Madagascar, je produis des contenus indépendants. Votre soutien direct est essentiel pour contourner les obstacles géographiques et maintenir la qualité des chaînes.
+        <p class="intro reveal">
+            Depuis Madagascar, je produis du contenu indépendant sur deux univers distincts. Faute d'accès à AdSense, Patreon et aux plateformes classiques depuis mon pays, je dépend entièrement de votre soutien direct. Choisissez la chaîne que vous souhaitez soutenir ci-dessous.
         </p>
 
-        <section id="projects-section" class="reveal" style="display:none;">
-            <div class="projects-grid">
-                <a href="https://www.youtube.com/@multipolarisfr" target="_blank" class="project-card">
-                    <span class="project-icon">🌍</span>
-                    <h3 class="project-title">Multipolaris</h3>
-                    <p class="project-desc">Analyses géopolitiques et militaires</p>
-                </a>
-                <a href="https://www.youtube.com/c/HoussenMoshinaly" target="_blank" class="project-card">
-                    <span class="project-icon">🤖</span>
-                    <h3 class="project-title">Houssen Moshinaly</h3>
-                    <p class="project-desc">Technologie et Intelligence Artificielle</p>
-                </a>
-            </div>
+        <p class="channels-label reveal">Mes deux univers</p>
+
+        <section class="channels-grid reveal">
+            <a href="multipolaris.html" class="channel-card multi">
+                <span class="featured-badge">Principal</span>
+                <span class="channel-icon">🌍</span>
+                <h3 class="channel-title">Multipolaris</h3>
+                <p class="channel-desc">
+                    Analyses géopolitiques et militaires. Décryptage des rapports de force mondiaux, stratégies étatiques, crises régionales et questions de défense. C'est ma chaîne la plus active.
+                </p>
+                <span class="channel-cta">Soutenir Multipolaris →</span>
+            </a>
+
+            <a href="houssen.html" class="channel-card tech">
+                <span class="channel-icon">🤖</span>
+                <h3 class="channel-title">Houssen Moshinaly</h3>
+                <p class="channel-desc">
+                    Technologie et Intelligence Artificielle. Tests, tutoriels, expérimentations et services sur-mesure pour créateurs et entreprises.
+                </p>
+                <span class="channel-cta">Découvrir & soutenir →</span>
+            </a>
         </section>
 
-        <section class="patreon-section reveal">
-            <div class="patreon-card">
-                <h2>⭐ Soutien Mensuel</h2>
-                <p>Le meilleur moyen de garantir la pérennité de mes projets et d'accéder aux contenus exclusifs.</p>
-                <a href="https://patreon.com/houssenmoshine" class="btn-patreon" target="_blank">Rejoindre sur Patreon</a>
-            </div>
+        <section class="info-box reveal">
+            <h3>💡 Pourquoi un site dédié ?</h3>
+            <p>
+                YouTube, AdSense, Patreon et de nombreuses plateformes financières refusent ou restreignent fortement les créateurs basés à Madagascar. Ce site est mon unique porte d'entrée pour recevoir vos dons et paiements de prestations, via Mobile Money, transfert international ou crypto.
+            </p>
         </section>
 
-        <section class="meta-prompt-section reveal">
-            <div class="meta-prompt-card">
-                <div class="meta-badge">🚀 NOUVEAU</div>
-                <h2>Donnez une Âme à votre IA</h2>
-                <p>Je crée votre Meta-Prompt sur-mesure pour YouTube ou Blog. Automatisez votre style, le rythme audio et la génération d'images.</p>
-                <div class="meta-features">
-                    <span>🎭 Persona unique</span>
-                    <span>🎬 Structure audio TTS</span>
-                    <span>🖼️ Prompts IA intégrés</span>
-                    <span>🔍 Titres SEO</span>
-                </div>
-                <a href="consulting.html" class="btn-meta">Découvrir le service</a>
-                <p class="meta-price">À partir de 159 $</p>
-            </div>
-        </section>
-
-        <h2 class="section-title reveal">Faire un don ponctuel</h2>
-        <p class="intro reveal">Pas d'abonnement, juste un gesture libre selon vos moyens.</p>
-
-        <section class="payment-grid reveal">
-            <div class="payment-card">
-                <h3>Western Union</h3>
-                <p>La méthode la plus fiable pour les transferts vers Madagascar.</p>
-                <div class="info-block">
-                    <strong>Pays :</strong> Madagascar<br>
-                    <strong>Nom :</strong> Houssen Moshinaly<br>
-                    <strong>Ville :</strong> Antananarivo<br>
-                    <strong>Tél :</strong> +261 34 18 547 16
-                </div>
-                <p class="warning">⚠️ Choisissez "Retrait en espèce" et envoyez le code MTCN par WhatsApp.</p>
-                <a href="https://www.westernunion.com/fr/fr/send-money-to-madagascar.html" class="btn-link" target="_blank">Western Union →</a>
-            </div>
-
-            <div class="payment-card">
-                <h3>Mobile Money</h3>
-                <p>Envoi direct sur portefeuille mobile.</p>
-                <div class="info-block">
-                    <strong>Opérateur :</strong> Telma Mvola<br>
-                    <strong>Bénéficiaire :</strong> Houssen Moshinaly<br>
-                    <strong>Numéro :</strong> +261 34 18 547 16
-                </div>
-                <div class="btn-group">
-                    <a href="https://www.remitly.com/" class="btn-link" target="_blank">Remitly</a>
-                    <a href="https://www.taptapsend.com/" class="btn-link" target="_blank">Taptap Send</a>
-                </div>
-            </div>
-
-            <div class="payment-card">
-                <h3>Cryptomonnaies</h3>
-                <p>Rapide, discret et sans frais bancaires.</p>
-                
-                <div style="margin-bottom:var(--space-sm);">
-                    <span class="crypto-label">USDT (TRC-20)</span>
-                    <div class="crypto-row">
-                        <span id="usdt-addr" class="crypto-addr">TMhWU4MhgFyy5ouRyRmszX4JtYBy6bcZwo</span>
-                        <button class="copy-btn" onclick="copyTo('usdt-addr', this)">Copier</button>
-                    </div>                    
-                </div>
-
-                <div>
-                    <span class="crypto-label">Bitcoin (BTC)</span>
-                    <div class="crypto-row">
-                        <span id="btc-addr" class="crypto-addr">1MjPjgtf969qLNVfQ3CqiXvJ8K1q22Tjcm</span>
-                        <button class="copy-btn" onclick="copyTo('btc-addr', this)">Copier</button>
-                    </div>                    
-                </div>
-            </div>
-        </section>
-
-        <section class="whatsapp-section reveal">
+        <section class="contact-section reveal">
             <a href="https://wa.me/261341854716" class="btn-whatsapp" target="_blank">
                 <span>💬</span>
-                <span>Contacter sur WhatsApp</span>
+                <span>Me contacter sur WhatsApp</span>
             </a>
             <p style="margin-top:var(--space-sm); color:var(--text-muted); font-size:0.9rem;">
-                Pour le MTCN ou simplement pour discuter
+                Pour toute question, confirmation de paiement ou demande spécifique
             </p>
         </section>
 
         <footer class="reveal">
-            <p>© 2024 Houssen Moshinaly - Tous droits réservés</p>
-            <p>Merci de rendre ces projets possibles</p>
+            <p>© 2026 Houssen Moshinaly — Tous droits réservés</p>
+            <p>Merci de rendre ces projets indépendants possibles.</p>
         </footer>
     </div>
 
     <script>
-        function copyTo(id, btn) {
-            const txt = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(txt).then(() => {
-                const originalText = btn.innerText;
-                btn.innerText = 'Copié !';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme');
+
+        function applyTheme(dark) {
+            body.classList.toggle('theme-dark', dark);
+            themeIcon.textContent = dark ? '☀️' : '🌙';
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const channel = params.get('channel');
-            
-            const body = document.body;
-            const title = document.getElementById('main-title');
-            const subtitle = document.getElementById('subtitle');
-            const intro = document.getElementById('dynamic-intro');
-            const profilePic = document.getElementById('profile-pic');
-            const projectsSection = document.getElementById('projects-section');
-            const locationTag = document.getElementById('location-tag');
-            const pageTitle = document.getElementById('page-title');
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
+        applyTheme(savedTheme === 'dark');
 
-            function setTheme(isDark) {
-                if (isDark) {
-                    body.classList.add('theme-dark');
-                    body.classList.remove('theme-light');
-                    themeIcon.textContent = '☀️';
-                } else {
-                    body.classList.remove('theme-dark');
-                    body.classList.add('theme-light');
-                    themeIcon.textContent = '🌙';
-                }
-            }
-
-            let isDarkMode = false;
-
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                isDarkMode = true;
-                setTheme(true);
-            }
-
-            themeToggle.addEventListener('click', () => {
-                isDarkMode = !isDarkMode;
-                setTheme(isDarkMode);
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            });
-
-            if (channel === 'multi') {
-                body.classList.add('theme-multi');
-                title.innerText = 'Soutenir Multipolaris';
-                subtitle.innerText = 'Analyses Géopolitiques & Militaires';
-                intro.innerHTML = 'La production de vidéos d\'analyse militaire demande du temps et des ressources. Votre soutien garantit l\'indépendance éditoriale de la chaîne.';
-                pageTitle.innerText = 'Soutenir Multipolaris';
-            } else if (channel === 'tech') {
-                body.classList.add('theme-tech');
-                title.innerText = 'Houssen Moshinaly Tech';
-                subtitle.innerText = 'Intelligence Artificielle & Technologie';
-                intro.innerHTML = 'Tester les nouvelles IA, héberger des modèles et créer des tutoriels a un coût (GPU, Serveurs). Merci de m\'aider à vulgariser le futur.';
-                pageTitle.innerText = 'Soutenir la chaîne Tech';
-            } else {
-                profilePic.style.display = 'inline-block';
-                locationTag.style.display = 'inline-flex';
-                projectsSection.style.display = 'block';
-            }
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 100);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
+        themeToggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('theme-dark');
+            applyTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
